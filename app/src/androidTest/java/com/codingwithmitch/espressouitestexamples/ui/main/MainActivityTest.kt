@@ -35,6 +35,8 @@ class MainActivityTest {
         onView(withId(R.id.main)).check(matches(isDisplayed()))
     }
     //end region
+
+    //Test Suites
 }
 
 
