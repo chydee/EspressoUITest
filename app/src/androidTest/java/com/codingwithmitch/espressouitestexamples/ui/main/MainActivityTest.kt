@@ -1,6 +1,7 @@
 package com.codingwithmitch.espressouitestexamples.ui.main
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -18,6 +19,7 @@ class MainActivityTest {
     @get: Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    //region: This Test is for testing Activity Navigation
     @Test
     fun test_navSecondaryActivity() {
         onView(withId(R.id.button_next_activity)).perform(click())
@@ -28,7 +30,11 @@ class MainActivityTest {
     fun test_backPress_toMainActivity() {
         onView(withId(R.id.button_next_activity)).perform(click())
         onView(withId(R.id.secondary)).check(matches(isDisplayed()))
+        //onView(withId(R.id.button_back)).perform(click())// Method 1
+        pressBack() // method 2 is better
+        onView(withId(R.id.main)).check(matches(isDisplayed()))
     }
+    //end region
 }
 
 
